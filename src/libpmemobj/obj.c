@@ -2207,6 +2207,7 @@ int
 pmemobj_alloc(PMEMobjpool *pop, PMEMoid *oidp, size_t size,
 	uint64_t type_num, pmemobj_constr constructor, void *arg)
 {
+	printf("test by wyf\n");
 	LOG(3, "pop %p oidp %p size %zu type_num %llx constructor %p arg %p",
 		pop, oidp, size, (unsigned long long)type_num,
 		constructor, arg);
