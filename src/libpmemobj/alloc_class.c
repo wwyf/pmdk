@@ -327,7 +327,7 @@ alloc_class_find_or_create(struct alloc_class_collection *ac, size_t n)
 			return c;
 	}
 
-	return alloc_class_new(-1, ac, CLASS_RUN, HEADER_COMPACT, n, 0,
+	return alloc_class_new(-1, ac, CLASS_RUN, HEADER_LEGACY, n, 0,
 		required_size_idx);
 }
 
@@ -421,12 +421,12 @@ alloc_class_collection_new()
 
 	memset(ac->class_map_by_alloc_size, 0xFF, maps_size);
 
-	if (alloc_class_new(-1, ac, CLASS_HUGE, HEADER_COMPACT,
+	if (alloc_class_new(-1, ac, CLASS_HUGE, HEADER_LEGACY,
 		CHUNKSIZE, 0, 1) == NULL)
 		goto error;
 
 	struct alloc_class *predefined_class =
-		alloc_class_new(-1, ac, CLASS_RUN, HEADER_COMPACT,
+		alloc_class_new(-1, ac, CLASS_RUN, HEADER_LEGACY,
 			MIN_UNIT_SIZE, 0, 1);
 	if (predefined_class == NULL)
 		goto error;
